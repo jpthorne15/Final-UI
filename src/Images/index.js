@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { API_URL } from '../config'
+import { API_URL } from '../config';
+import CreateImage from './CreateImage';
 import Image from './image'
 
 
@@ -25,6 +26,7 @@ componentDidMount() {
   render() {
     return (
     <div>
+        <CreateImage refresh={this.getImages}/>
         {this.state.image}
     </div>
 

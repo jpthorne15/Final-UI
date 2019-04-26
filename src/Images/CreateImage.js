@@ -51,7 +51,6 @@ export default class extends Component {
                 value={this.state.trail_name} 
                 onChange={this.handleChange}/>
                 <br/>
-//How will breaks related to input rectangles in css file
                 <input type="text" 
                 name="name"
                 placeholder="Name of Image" 
@@ -96,9 +95,8 @@ export default class extends Component {
                 <br/>
                 <input type="text" 
                 name="image"
-                placeholder=" "
-                //Verify this is how to do images from a file not a url
-                value={this.state.img_src} 
+                placeholder="Image URL"
+                value={this.state.image} 
                 onChange={this.handleChange}/>
                 <img src="../../Pictures/725-6-85 (1).JPG" ></img>
                 <br/>

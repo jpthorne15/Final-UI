@@ -53,7 +53,7 @@ export default class extends Component {
                 value={this.state.trail_name} 
                 onChange={this.handleChange}/>
                 <br/>
-//How will breaks related to input rectangles in css file
+{/* //How will breaks related to input rectangles in css file */}
                 <input type="text" 
                 name="name"
                 placeholder="Name of Image" 
