@@ -41,6 +41,7 @@ export default class extends Component {
                     <img src={image.image} height="150 px" alt="myImg" />
                     <h4>Trail Name: {image.trail_name}</h4>
                     <h4>Item Number: {image.item_number}</h4>
+                    <h4>Item Type: {image.item_type}</h4>
                     <h4>JPT Library Reference: {image.jpt_library_reference}</h4>
                     <h4>Item Description:</h4> 
                     <p>{image.item_description}</p>

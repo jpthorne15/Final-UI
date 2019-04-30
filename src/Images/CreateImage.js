@@ -37,7 +37,7 @@ export default class extends Component {
             issue_description: "",
             image: ""
         }))
-        .then ( () => this.props.refresh ())
+        .then ( () => this.props.refresh())
         .catch (err => console.log(err))
     }
 
@@ -87,7 +87,7 @@ export default class extends Component {
                 value={this.state.issue} 
                 onChange={this.handleChange}/>
                 <br/>
-                <textarea name = "text" 
+                <textarea type = "text" 
                 name="issue_description"
                 placeholder="Elaboration on Issue Listed Above" 
                 value={this.state.issue_description} 
@@ -96,9 +96,8 @@ export default class extends Component {
                 <input type="text" 
                 name="image"
                 placeholder="Image URL"
-                value={this.state.image} 
+                value={this.state.image.img_url} 
                 onChange={this.handleChange}/>
-                <img src="../../Pictures/725-6-85 (1).JPG" ></img>
                 <br/>
                 <input type="submit" value="Create Image"/>  
             </form>

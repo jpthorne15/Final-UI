@@ -23,10 +23,13 @@ export default class extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
-        await fetch (`${API_URL}/image`, {
+        // console.log('this.state', this.state)
+        // console.log('this.props.image._id', this.props.image._id)
+        await fetch (`${API_URL}/image/${this.props.image._id}`, {
             method : "PUT",
             body: JSON.stringify(this.state)    
-        }).then( res => console.log(res.json()))
+        })
+        .then( res => console.log('res',res))
         .then( () => this.setState ({
             trail_name: "",
             name: "",
@@ -38,8 +41,8 @@ export default class extends Component {
             issue_description: "",
             image: ""
         }))
-        .then ( () =>this.props.closeUpdate())
-        .then ( () => this.props.refresh ())
+        // .then ( () =>this.props.closeUpdate())
+        .then ( () => this.getImages()) //fix me please
         .catch (err => console.log(err))
     }
 
@@ -90,7 +93,7 @@ export default class extends Component {
                 value={this.state.issue} 
                 onChange={this.handleChange}/>
                 <br/>
-                <textarea name = "text" 
+                <textarea type = "text" 
                 name="issue_description"
                 placeholder="Elaboration on Issue Listed Above" 
                 value={this.state.issue_description} 
