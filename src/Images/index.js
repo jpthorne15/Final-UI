@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { API_URL } from '../config';
 import CreateImage from './CreateImage';
+import {BrowserRouter as Router} from 'react-router-dom'
 import Image from './image'
+import Routing from '../routing'
 
 
 
@@ -28,6 +30,9 @@ componentDidMount() {
     <div>
         <CreateImage refresh={this.getImages}/>
         {this.state.image}
+        {/* <Router>
+        <Routing />
+        </Router> */}
     </div>
 
         

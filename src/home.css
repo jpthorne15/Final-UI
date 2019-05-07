@@ -1,0 +1,67 @@
+/* MacBook */
+body {
+position: relative;
+width: 1149px;
+height: 696px;
+
+background: #0F5523;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+/* MY PUBLIC TRAIL ADVENTURES */
+
+position: absolute;
+width: 549px;
+height: 33px;
+left: 318px;
+top: 23px;
+
+font-family: MedievalSharp;
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 41px;
+text-align: center;
+
+color: #000000;
+
+/* 190404 Helio Final Project Home Page Image */
+
+position: absolute;
+width: 620px;
+height: 554px;
+left: 265px;
+top: 81px;
+
+background: img_url("https://beta-static.photobucket.com/images/aa333/JimmyHendrix/0/4471a620-bcc7-47cb-b522-27b6458d1eca-original.jpg?width=1920&height=1080&fit=bounds");
+border: 1px solid #000000;
+box-sizing: border-box;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+/* Button */
+
+position: absolute;
+width: 141px;
+height: 58px;
+left: 973px;
+top: 23px;
+
+/* MY TRAIL ADVENTURES THAT INSPIRED MY ACTIVISM */
+
+position: absolute;
+left: 6.57%;
+right: 7.3%;
+top: 0%;
+bottom: 13.33%;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: 200;
+font-size: 11px;
+line-height: 13px;
+text-align: center;
+
+color: #000000;
+
+border: 1px solid #000000;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

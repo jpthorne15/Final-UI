@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { API_URL } from '../config'
 import UpdateImage from './UpdateImage'
+import CreateImage from './CreateImage'
 
 export default class extends Component {
     state = {
@@ -34,8 +35,13 @@ export default class extends Component {
     
         render() {
             const image = this.props.image
-            console.log(image)
+            console.log(this.state.image)
             return (
+                <Fragment>
+                {/* <div>
+                <CreateImage refresh={this.getImages}/>
+                {this.state.image}
+                </div> */}
                 <fieldset>
                     <legend>{image.name}</legend>
                     <img src={image.image} height="150 px" alt="myImg" />
@@ -50,9 +56,9 @@ export default class extends Component {
                     <p>{image.issue_description}</p>
                     {this.state.isUpdating ? <this.updateForm/> : <this.buttons/>}          
                 </fieldset>
-
+                </Fragment>
         )
     }
 }
-
+// Export default Image
 
