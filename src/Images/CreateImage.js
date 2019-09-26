@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { API_URL } from '../config'
+import { API_URL } from '../config'//Deconstuction
 
-export default class extends Component {
+export default class extends Component {//Setting object state; Significance of state in React state is oblject that is observed for changes
     state = {
         trail_name: "",
         name: "",
@@ -16,17 +16,22 @@ export default class extends Component {
 
     handleChange = (event) =>{
         this.setState({
-            [event.target.name] : event.target.value
+            [event.target.name] : event.target.value //Dont know target value
         })
     }
-
+// handleChange has an event parameter that sets the state in this block of code
     handleSubmit = async (event) => {
         event.preventDefault()
+        // Makes event cancellation possible by preventing it from submitting a form
         await fetch (`${API_URL}/image`, {
+            // find the API URL and destructure or extract the image data portion
             method : "POST",
-            body: JSON.stringify(this.state)    
-        }).then( res => console.log(res.json()))
-        .then( () => this.setState ({
+            // http verb to post new object to json and then database
+            body: JSON.stringify(this.state) //stringify method takesin state as a 
+            // parameter converting a json oblject to a string    
+        }).then( res => console.log("handleSubmit",res.json()))//converting the response to a json object to console logged in the browser
+        .then( () => this.setState ({//both declare parameter current state that 
+            // is blank or clear out our state object so that new values can be added
             trail_name: "",
             name: "",
             item_number: "",
@@ -37,9 +42,12 @@ export default class extends Component {
             issue_description: "",
             image: ""
         }))
-        .then ( () => this.props.refresh())
-        .catch (err => console.log(err))
+        .then ( () => this.props.refresh())//display newly added data and after thats been added to 
+        // Mongo it refreshes the categroies
+        .catch (err => console.log("err", err))
     }
+        // catch acts as a way to declare that there is an error 
+        // in the program execution on the console log
 
     render () {
         return (
@@ -51,8 +59,8 @@ export default class extends Component {
                 value={this.state.trail_name} 
                 onChange={this.handleChange}/>
                 <br/>
-                <input type="text" 
-                name="name"
+                <input type="text" // DO not focus on every input
+                name="name"//This is the target get me the name input that event happens on is the target
                 placeholder="Name of Image" 
                 value={this.state.name} 
                 onChange={this.handleChange}/>
@@ -99,7 +107,8 @@ export default class extends Component {
                 value={this.state.image.img_url} 
                 onChange={this.handleChange}/>
                 <br/>
-                <input type="submit" value="Create Image"/>  
+                <input type="submit" value="Create Image"/> 
+                {/* other word for image  */}
             </form>
         )
     }

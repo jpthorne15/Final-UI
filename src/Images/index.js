@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { API_URL } from '../config';
 import CreateImage from './CreateImage';
-import {BrowserRouter as Router} from 'react-router-dom'
+// import {BrowserRouter as Router} from 'react-router-dom'
 import Image from './image'
-import Routing from '../routing'
+// import Routing from '../routing'
 
 
 
@@ -13,11 +13,13 @@ class Images extends Component {
   }
 
   getImages = async () => {
+    // Parent component above
     await fetch(`${API_URL}/images`)
         .then(response => response.json())
-        .then(data => data.map(element => <Image image={element} refresh={this.getImage}/>))
+        .then(data => data.map(element => <Image key={element._id} image={element} refresh={this.getImages}/>).reverse())
+        // Creates 7 different tags for all images. 
         .then(components => this.setState({ image: components }))
-        .catch( err => console.log(err))
+        .catch( err => console.log("err" , err))
 }
 
 componentDidMount() {

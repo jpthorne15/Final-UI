@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { API_URL } from '../config'
 import UpdateImage from './UpdateImage'
-import CreateImage from './CreateImage'
+//import CreateImage from './CreateImage'
 
 export default class extends Component {
     state = {
@@ -11,9 +11,9 @@ export default class extends Component {
     handleDelete = async () => {
         await fetch(`${API_URL}/image/${this.props.image._id}`, {
             method: 'DELETE'
-        }).then(res => console.log(res))
+        }).then(res => console.log("handleDelete",res))
         .then(() => window.location.reload())
-        .catch(err => console.log(err))
+        .catch(err => console.log("err", err))
     }
     
     toggleUpdate = () => {
@@ -35,7 +35,7 @@ export default class extends Component {
     
         render() {
             const image = this.props.image
-            console.log(this.state.image)
+            console.log("this.state.image" , image)
             return (
                 <Fragment>
                 {/* <div>
@@ -61,4 +61,4 @@ export default class extends Component {
     }
 }
 // Export default Image
-
+//Familiarize with Google Developer Tools

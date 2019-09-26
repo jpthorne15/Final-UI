@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { API_URL } from '../config'
-
+// Imports The React component and the url for the api
 export default class extends Component {
+    //Setting object state; Significance of state in React state is oblject that is observed for changes
     state = {
         trail_name: this.props.image.trail_name,
         name: this.props.image.name,
@@ -12,23 +13,26 @@ export default class extends Component {
         issue: this.props.image.issue,
         issue_description: this.props.image.issue_description,
         image: this.props.image.img_url
-        //See about how to place in directory
     }
-
+// This state represents all properties that are contained within any object that is input
     handleChange = (event) =>{
         this.setState({
             [event.target.name] : event.target.value
         })
+        // Input field is clicked thats the targete element; is a pattern of key value
     }
-
+// handleChange has an event parameter that sets the state in this block of code
     handleSubmit = async (event) => {
         event.preventDefault()
         // console.log('this.state', this.state)
         // console.log('this.props.image._id', this.props.image._id)
         await fetch (`${API_URL}/image/${this.props.image._id}`, {
             method : "PUT",
+            // fetch is accessing a specific property of an object in the database as accessed by the API URL
+            // the PUT method is used to overwrite the object once its updated
             body: JSON.stringify(this.state)    
         })
+        //converting the response to a json object to console logged in the browser
         .then( res => console.log('res',res))
         .then( () => this.setState ({
             trail_name: "",
@@ -41,15 +45,17 @@ export default class extends Component {
             issue_description: "",
             image: ""
         }))
-        // .then ( () =>this.props.closeUpdate())
-        .then ( () => this.getImages()) //fix me please
-        .catch (err => console.log(err))
-    }
+        .then ( () =>this.props.closeUpdate())
+        // the state is revised and the update sequence is closed after the .then setState
+        // .then ( () => this.getImages()) //fix me please
+        .then( () => this.props.refresh())
+        .catch (err => console.log("err", err))
+    }  
 
     render () {
         return (
             <form onSubmit = {this.handleSubmit}>
-                <h2> - Update Image - </h2>
+                <h2> - Update Image - </h2>                                        
                 <input type="text" 
                 name="trail_name"
                 placeholder="Name of Trail" 
