@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { API_URL } from '../config';
 import CreateImage from './CreateImage';
-// import {BrowserRouter as Router} from 'react-router-dom'
 import Image from './image'
-// import Routing from '../routing'
-
 
 
 class Images extends Component {
+  // This class extends the react component above on line 1
   state = {
       Image : []
   }
-
+//This sets the initial state for the array of image files
   getImages = async () => {
-    // Parent component above
     await fetch(`${API_URL}/images`)
         .then(response => response.json())
         .then(data => data.map(element => <Image key={element._id} image={element} refresh={this.getImages}/>).reverse())
@@ -25,16 +22,15 @@ class Images extends Component {
 componentDidMount() {
     this.getImages()
 }
-
+//this.getimages needed to replace .getimage on line 19 to make refresh update work
+// The componentDidMount delcaration applies to this state of getImages
 
   render() {
     return (
     <div>
         <CreateImage refresh={this.getImages}/>
         {this.state.image}
-        {/* <Router>
-        <Routing />
-        </Router> */}
+     {/* Refreshes the images and resets them to new state */}
     </div>
 
         

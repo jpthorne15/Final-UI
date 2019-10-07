@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react'
+//impoorts a fragment of the react component
 import { API_URL } from '../config'
 import UpdateImage from './UpdateImage'
-//import CreateImage from './CreateImage'
-
+//imports Update Image so that all information on an existing object is there
+// 
 export default class extends Component {
     state = {
         isUpdating: false
     }
-
+//State is set so that updating will not occur
     handleDelete = async () => {
         await fetch(`${API_URL}/image/${this.props.image._id}`, {
             method: 'DELETE'
@@ -15,33 +16,35 @@ export default class extends Component {
         .then(() => window.location.reload())
         .catch(err => console.log("err", err))
     }
-    
+    // handleDelete functions uses a promise to sync with database information; uses delete http verb
+    //  console log confirms deletion; .then prompts the specific location to reload
+ 
     toggleUpdate = () => {
         this.setState({ isUpdating : !this.state.isUpdating})
     }
-    
+    //!this state opposite of false on Line 9??? now is updating when toggle function called
     buttons = () => (
         <div>
         <input type= "button" value='Delete' onClick={this.handleDelete} />
         <input type= "button" value='Update' onClick={this.toggleUpdate} />
         </div>   
     )
+    // buttons is a function; this.handleDelete deletes based onclick fuction and this.toggleUpdate updates the database
+    // as an end projuct
     updateForm = () => (
         <div>
             <UpdateImage image = {this.props.image} refresh={this.props.refresh} closeUpdate={this.toggleUpdate}/>
             <input type = "button" value = "Cancel" onClick = {this.toggleUpdate}/>
         </div>
     )
-    
+    //lines 36-38 call the Updateimage function refresh props that chnange and close the update
+    // Button with value cancel will cancel the data input; Onclick updates the data entry
         render() {
             const image = this.props.image
             console.log("this.state.image" , image)
             return (
                 <Fragment>
-                {/* <div>
-                <CreateImage refresh={this.getImages}/>
-                {this.state.image}
-                </div> */}
+                
                 <fieldset>
                     <legend>{image.name}</legend>
                     <img src={image.image} height="150 px" alt="myImg" />
@@ -60,5 +63,5 @@ export default class extends Component {
         )
     }
 }
-// Export default Image
-//Familiarize with Google Developer Tools
+// The fieldset dictates the size of the print. image height
+
