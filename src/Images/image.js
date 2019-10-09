@@ -11,7 +11,6 @@ export default class extends Component {
 //State is set so that updating will not occur
     handleDelete = async () => {
         await fetch(`${API_URL}/image/${this.props.image._id}`, {
-            headers: 'Access-Control-Allow-Origin',
             method: 'DELETE'
         }).then(res => console.log("handleDelete",res))
         .then(() => window.location.reload())
