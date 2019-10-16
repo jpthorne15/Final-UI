@@ -23,9 +23,10 @@ export default class extends Component {//Setting object state; Significance of 
     handleSubmit = async (event) => {
         event.preventDefault()
         // Makes event cancellation possible by preventing it from submitting a form
-        await fetch (`${API_URL}/image`, {
+        await fetch (`${API_URL}/`, {
             // find the API URL and destructure or extract the image data portion
             method : "POST",
+            headers: {"Content-Type": "application/json"},
             // http verb to post new object to json and then to API and database
             body: JSON.stringify(this.state) //stringify method in body of object takesin state as a 
             // parameter converting a json oblject to a string    
@@ -111,7 +112,6 @@ export default class extends Component {//Setting object state; Significance of 
                 onChange={this.handleChange}/>
                 <br/>
                 <input type="submit" value="Create Image"/> 
-                {/* other word for image  */}
             </form>
         )
     }

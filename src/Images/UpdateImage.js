@@ -12,7 +12,7 @@ export default class extends Component {
         item_description: this.props.image.item_description,
         issue: this.props.image.issue,
         issue_description: this.props.image.issue_description,
-        image: this.props.image.img_url
+        image: this.props.image.image
     }
 // This state represents all properties that are contained within any object that is input
     handleChange = (event) =>{
@@ -24,10 +24,11 @@ export default class extends Component {
 // handleChange has an event parameter that sets the state in this block of code
     handleSubmit = async (event) => {
         event.preventDefault()
-        // console.log('this.state', this.state)
-        // console.log('this.props.image._id', this.props.image._id)
-        await fetch (`${API_URL}/image/${this.props.image._id}`, {
+       console.log(`this.state`,this.state)
+       console.log(`this.props.image._id`,this.props.image._id)
+        await fetch(`${API_URL}/image/${this.props.image._id}`, {
             method : "PUT",
+            headers: {"Content-Type": "application/json"},
             // fetch is accessing a specific property of an object in the database as accessed by the API URL
             // the PUT method is used to overwrite the object once its updated
             body: JSON.stringify(this.state)    
@@ -54,6 +55,8 @@ export default class extends Component {
     }  
 
     render () {
+        console.log(`renderState`,this.state)
+        console.log(`renderProps`,this.props)
         return (
             <form onSubmit = {this.handleSubmit}>
                 <h2> - Update Image - </h2> 

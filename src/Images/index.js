@@ -11,7 +11,7 @@ class Images extends Component {
   }
 //This sets the initial state for the array of image files
   getImages = async () => {
-    await fetch(`${API_URL}/images`)
+    await fetch(`${API_URL}/`)
         .then(response => response.json())
         .then(data => data.map(element => <Image key={element._id} image={element} refresh={this.getImages}/>).reverse())
         // Creates 7 different tags for all images. 
