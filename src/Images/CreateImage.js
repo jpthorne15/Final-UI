@@ -2,6 +2,7 @@ import React, { Component } from 'react'//
 import { API_URL } from '../config'//Deconstuction
 
 export default class extends Component {//Setting object state; Significance of state in React state is oblject that is observed for changes
+    // correlates with assigned values in the form below lines 57-118
     state = {
         trail_name: "",
         name: "",
@@ -22,17 +23,18 @@ export default class extends Component {//Setting object state; Significance of 
 // handleChange has an event parameter that sets the state in this block of code
     handleSubmit = async (event) => {
         event.preventDefault()
-        // Makes event cancellation possible by preventing it from submitting a form
+        // Prevents default behavior of clearing screen and console log after submission of data; 
         await fetch (`${API_URL}/`, {
             // find the API URL and destructure or extract the image data portion
             method : "POST",
-            headers: {"Content-Type": "application/json"},
             // http verb to post new object to json and then to API and database
-            body: JSON.stringify(this.state) //stringify method in body of object takesin state as a 
-            // parameter converting a json oblject to a string    
+            headers: {"Content-Type": "application/json"},
+            //Specifies http headers; indicates the request body format is json appl
+            body: JSON.stringify(this.state) //stringify method in body of object takes in state as a 
+            // goes into data body and converts a json oblject to a string to transfer by http(only takes strings)    
         }).then( res => console.log("handleSubmit",res.json()))//converting the response to a json object and then console logged in the browser
         .then( () => this.setState ({//both declare parameter current state that 
-            // is blank or clear out our state object so that new values can be added
+            // is blank or clear out our state object so that new values can be added. 
             trail_name: "",
             name: "",
             item_number: "",
@@ -44,12 +46,12 @@ export default class extends Component {//Setting object state; Significance of 
             image: ""
         }))
         .then ( () => this.props.refresh())//display newly added data and after thats been added to 
-        // Mongo it refreshes the categroies
+        // database ang then it refreshes the categroies
         .catch (err => console.log("err", err))
     }
         // catch acts as a way to declare that there is an error 
         // in the program execution on the console log
-// Renders to screen properties of the object lines 35-43 and retuens data that is input through html form below
+// Renders output to screen properties of the object lines 35-46 and returns data that is input through html form below
     render () {
         return (
             <form onSubmit = {this.handleSubmit}>
@@ -58,16 +60,17 @@ export default class extends Component {//Setting object state; Significance of 
                 {/* The above is the header that will appear on the url */}
                 <input type="text" 
                 name="trail_name"
-                placeholder="Name of Trail" 
+                placeholder="Name of Trail"
                 value={this.state.trail_name} 
                 onChange={this.handleChange}/>
-                {/* Value is whatever the last value was placed on webpage box ;onChange constant equals the handleChange constant */}
+                {/* Value is whatever the last value was placed on webpage box ;onChange constant equals the current state of handleChange constant triggered by an event*/}
                 <br/>
                 <input type="text"
                 name="name"//This is the target get me the name input that event happens on is the target
                 placeholder="Name of Image" 
                 value={this.state.name} 
                 onChange={this.handleChange}/>
+
                 <br/>
                 <input type="int" 
                 name="item_number"

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-//impoorts a fragment of the react component
+//impoorts a ability to fragment so that child  of the react component does not add extra nodes to the DOM
 import { API_URL } from '../config'
 import UpdateImage from './UpdateImage'
 //imports Update Image so that all information on an existing object is there
@@ -8,7 +8,7 @@ export default class extends Component {
     state = {
         isUpdating: false
     }
-//State is set so that updating will not occur
+//State is set so that default updating will not occur
     handleDelete = async () => {
         await fetch(`${API_URL}/image/${this.props.image._id}`, {
             method: 'DELETE',        
@@ -22,15 +22,15 @@ export default class extends Component {
     toggleUpdate = () => {
         this.setState({ isUpdating : !this.state.isUpdating})
     }
-    //!this state opposite of false on Line 9??? now is updating when toggle function called
+    //!this state ternary expression related to Line 9 now is updating when toggle function called
     buttons = () => (
         <div>
         <input type= "button" value='Delete' onClick={this.handleDelete} />
         <input type= "button" value='Update' onClick={this.toggleUpdate} />
         </div>   
     )
-    // buttons is a function; this.handleDelete deletes based onclick fuction and this.toggleUpdate updates the database
-    // as an end projuct
+    // buttons are a function; this.handleDelete deletes based onclick fuction and this.toggleUpdate updates the database
+    // as an end product. This file has image id called out. This button will be part of each image display
     updateForm = () => (
         <div>
             <UpdateImage image = {this.props.image} refresh={this.props.refresh} closeUpdate={this.toggleUpdate}/>
@@ -63,5 +63,5 @@ export default class extends Component {
         )
     }
 }
-// The fieldset dictates the size of the print. image height
+// The fieldset dictates the size of the print in the boxes
 
