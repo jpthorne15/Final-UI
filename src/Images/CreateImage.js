@@ -1,7 +1,8 @@
 import React, { Component } from 'react'//
 import { API_URL } from '../config'//Deconstuction
 
-export default class extends Component {//Setting object state; Significance of state in React state is oblject that is observed for changes
+export default class extends Component {//Setting object state; 
+    //Significance of state in React state is oblject that is observed for changes
     // correlates with assigned values in the form below lines 57-118
     state = {
         trail_name: "",
@@ -17,7 +18,8 @@ export default class extends Component {//Setting object state; Significance of 
 
     handleChange = (event) =>{
         this.setState({
-            [event.target.name] : event.target.value //Targets the name and the value associated with the name when the handler is called on a change
+            [event.target.name] : event.target.value //Is a dynamic function it will call this function based
+            // when Onchange is invoked
         })
     }
 // handleChange has an event parameter that sets the state in this block of code
@@ -29,12 +31,13 @@ export default class extends Component {//Setting object state; Significance of 
             method : "POST",
             // http verb to post new object to json and then to API and database
             headers: {"Content-Type": "application/json"},
-            //Specifies http headers; indicates the request body format is json appl
-            body: JSON.stringify(this.state) //stringify method in body of object takes in state as a 
-            // goes into data body and converts a json oblject to a string to transfer by http(only takes strings)    
-        }).then( res => console.log("handleSubmit",res.json()))//converting the response to a json object and then console logged in the browser
+            //Specifies http headers; indicates the request body format is json
+            body: JSON.stringify(this.state) //stringify method in body of object takes in state as an Origin of payload
+            // goes into data body and converts a json oblject to a string to transfer data that 
+            //is input to http pipeline(only takes strings)    
+        }).then( res => console.log("handleSubmit",res.json()))//converting the response to a json object and then logged to console
         .then( () => this.setState ({//both declare parameter current state that 
-            // is blank or clear out our state object so that new values can be added. 
+            // is blank or clear out state object so that new values can be added. 
             trail_name: "",
             name: "",
             item_number: "",
@@ -45,8 +48,7 @@ export default class extends Component {//Setting object state; Significance of 
             issue_description: "",
             image: ""
         }))
-        .then ( () => this.props.refresh())//display newly added data and after thats been added to 
-        // database ang then it refreshes the categroies
+        .then ( () => this.props.refresh())//refreshes the fieldset and page to blank values adjacent to the names above 
         .catch (err => console.log("err", err))
     }
         // catch acts as a way to declare that there is an error 

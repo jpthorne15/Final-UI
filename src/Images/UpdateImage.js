@@ -14,7 +14,7 @@ export default class extends Component {
         issue_description: this.props.image.issue_description,
         image: this.props.image.image
     }
-// This state represents all properties (categories) that are contained within any object that is input, 
+// This state represents all properties (names and values in jsx) that are contained within any object that is input, 
 //this prepopulates the form with existiing info
     
 handleChange = (event) =>{

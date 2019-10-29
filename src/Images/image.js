@@ -12,12 +12,15 @@ export default class extends Component {
     handleDelete = async () => {
         await fetch(`${API_URL}/image/${this.props.image._id}`, {
             method: 'DELETE',        
-        }).then(res => console.log("handleDelete",res))
-        .then(() => window.location.reload())
+        })
+        .then(res => console.log("handleDelete",res))
+       .then(() => window.location.reload())//Reloads entire app after a refresh
+        //.then(() => this.props.refresh()) //does not reload the entire app perform get request. 
+        //this.props.refresh is passed in from index.js where image component is mapped.
         .catch(err => console.log("err", err))
     }
     // handleDelete functions uses a promise to sync with database information; uses delete http verb
-    //  console log confirms deletion; .then prompts the specific location to reload
+    //  console log confirms deletion; .then prompts a reload of the page
  
     toggleUpdate = () => {
         this.setState({ isUpdating : !this.state.isUpdating})
